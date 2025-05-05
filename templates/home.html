@@ -1,0 +1,87 @@
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+</head>
+<body>
+{% extends "base.html" %}
+
+    {% block form_container %}
+    <div class="form-container">
+        <h1>Parameters</h1>
+        <div class="sidebar-divider"></div>
+        <form action="{{ url_for('submit_home_form') }}" method="post" id="userForm">
+            <div class="form-group">
+                <label for="type_model">1.Type of Model</label>
+                <select id="type_model" name="type_model" required>
+                    {% for model_name in form_data.type_model %}
+                        <option value='{{ model_name }}'>{{model_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    {% endblock %}
+
+    {% block navbar_main %}
+    <h1>Optical Character Recognition Demo</h1>
+    <div class="card-container">
+        
+        <div class="row1-col1">
+            <h1>Original Image</h1>
+            <div class="sidebar-divider"></div>
+            {% if image_path.image_path %}
+              <img src="{{ url_for('static', filename=image_path.image_path.split('static/')[-1]) }}" alt="Uploaded Image">
+            {% endif %}
+          </div>
+
+        <div class="row1-col2">
+            <h1>Process Image</h1>
+            <div class="sidebar-divider"></div>
+            {% if image_path.process_path %}
+              <img src="{{ url_for('static', filename=image_path.process_path.split('static/')[-1]) }}" alt="Uploaded Image">
+            {% endif %}
+        </div>
+
+    </div>
+    <div class="card-container">
+        <div class="row2-col1">
+
+            <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+                <label for="fileUpload">Click Here to Upload Images:</label>
+                <input type="file" id="fileUpload" name="fileUpload" accept=".png, .jpg, .jpeg">
+                {% if filename %}
+                <label >{{ filename }}</label>
+                {% endif %}
+            </form>
+           
+        </div>
+
+        <!-- <div class="row2-col2">
+            <h1>Extracted Info:{{ image_path.extracted_info }}</h1>
+            <a href="{{ url_for('static', filename='downloads/images.zip') }}" download class="btn btn-success">
+                Download ZIP
+            </a>
+        </div> -->
+        <div class="row2-col2">
+            <div class="info-download-container">
+                <h1>Extracted Info: {{ image_path.extracted_info }}</h1>
+                <a href="{{ url_for('static', filename='downloads/images.zip') }}" download class="btn btn-success">
+                    Download ZIP
+                </a>
+            </div>
+        </div>
+
+    </div>
+    {% endblock %}
+
+    <script>
+        document.getElementById("fileUpload").addEventListener("change", function () {
+          if (this.files.length > 0) {
+            document.getElementById("uploadForm").submit();
+          }
+        });
+    </script>
+</body>

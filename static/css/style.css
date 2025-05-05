@@ -1,0 +1,637 @@
+/* static/style.css */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+/*-------------------------------------------------------------Sidebar ----------------------------------------------------*/
+.sidenav {
+    /* flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    position: relative;
+    overflow: auto; /* Ensure content can scroll if necessary */
+
+    width: 250px;
+    height: 100%;
+    background-color: #f4f4f4;
+    border-right: 1px solid #f4f4f4;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: auto;
+}
+
+
+.sidenav h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: rgb(99, 99, 233);
+    text-align: center;
+}
+
+.sidenav a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    text-align: left;
+    background-color: rgb(171, 171, 238);
+    border: 1px solid transparent;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 18px;
+    text-decoration: none;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.sidenav a:hover {
+    background-color: #fff;
+    color: rgb(171, 171, 238);
+    border-color: rgb(171, 171, 238);
+}
+
+.sidenav a i {
+    /* margin-left: 10px; */
+    margin-right: 10px;
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+/* Style for the icon inside the h1 */
+.sidenav h1 i {
+    margin-right: 10px; /* Space between icon and text */
+    font-size: 32px; /* Size of the icon */
+}
+
+.sidenav.toggled {
+    width: 60px; /* Width when toggled */
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    /* margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px; */
+    position: relative;
+    overflow-y: auto;
+    /* background-color: #ede7e7; */
+    background-color: rgb(233, 237, 247); /* Optional background color #e0e0e0*/
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.search-bar button {
+    padding: 10px;
+    border: none;
+    background-color: rgb(171, 171, 238);
+    color: #fff;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.search-bar button:hover {
+    background-color: #fff;
+    color: rgb(171, 171, 238);
+    border: 1px solid rgb(171, 171, 238);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+}
+
+.user-profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-profile div {
+    font-size: 16px;
+}
+
+/* Add to static/style.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    /* background-color: #fff; */
+    background-color: rgb(233, 237, 247);
+    border-radius: 8px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    margin-left: 18px; /* Apply 15px margin to left and right */
+    margin-right: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.navbar .toggle-btn {
+    position: absolute;
+    top: 20px;
+    z-index: 1100; /* Ensure the button is above other elements */
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    flex: 0.65;
+}
+
+.navbar-left input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-right: 10px;
+    /*width: 400px; */
+    flex: 1;
+    /* margin-left: 40px; */
+
+}
+
+.navbar-left button {
+    padding: 8px 12px;
+    border: none;
+    background-color: rgb(171, 171, 238);
+    color: #fff;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 150px; 
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.navbar-left button:hover {
+    background-color: #fff;
+    color: rgb(171, 171, 238);
+    border: 1px solid rgb(171, 171, 238);
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right a {
+    margin-left: 15px;
+    color: rgb(171, 171, 238);
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.navbar-right h1{
+    font-size: 18px; 
+    color: rgb(99, 99, 233);
+    margin: 0;
+}
+
+.navbar-right a:hover {
+    color: #000;
+}
+
+.navbar-right .user-profile img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+/* Navbar Main Styling */
+.navbar-content-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    padding: 5px; /* Add padding around the content */
+    /* background-color: #fff; /* Background color to ensure separation */
+    /* border-radius: 8px; /* Rounded corners */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-bottom: 20px; /* Space below the navbar main */
+}
+
+.navbar-content-container h1{
+    text-align: center;
+    font-size: 30px; 
+    color: rgb(99, 99, 233);
+}
+
+
+
+/* Dropdown Button */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/*---------------------------------------------------------------Dropdown button-------------------------------------------------------------*/
+/* Dropdown Button */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.dropdown-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between text and arrow */
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(171, 171, 238);
+    color: #fff;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    font-size: 18px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-sizing: border-box;
+}
+
+.dropdown-button i {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+.dropdown-button .text {
+    flex: 1; /* Takes up available space */
+    text-align: left; /* Ensure text aligns left */
+}
+
+.dropdown-button:hover {
+    background-color: #fff;
+    color: rgb(171, 171, 238);
+    border-color: rgb(171, 171, 238);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid rgb(171, 171, 238);
+    border-radius: 5px;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    right: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+/*---------------------------------------------------------------Tool Form Info-------------------------------------------------------------*/
+/* Form Container */
+/* Form Container */
+.form-container {
+    display: none; /* Initially hidden */
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid rgb(171, 171, 238);
+    border-radius: 5px;
+    z-index: 1;
+    top: 100%; /* Position below the dropdown button */
+    left: 0;
+    right: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 500px;
+    width: 100%;
+    max-height: 80vh; /* Ensure the form does not exceed viewport height */
+    overflow-y: auto; /* Add scroll if content overflows */
+}
+
+.form-container h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: rgb(171, 171, 238);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+.form-group label{
+    display: block;
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: rgb(171, 171, 238);
+}
+
+input[type="text"],
+textarea {
+    width: 100%; /* Full width of the parent container */
+    padding: 10px; /* Space inside the dropdown */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 12px; /* Updated font size */
+    background-color: #fff; /* Background color of the dropdown */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #007bff; /* Border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Show dropdown content when button is clicked */
+.dropdown-button.active + .form-container {
+    display: block;
+}
+
+/* Style for the select dropdown */
+.form-group select {
+    width: 100%; /* Full width of the parent container */
+    padding: 10px; /* Space inside the dropdown */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 12px; /* Font size inside the dropdown */
+    background-color: #fff; /* Background color of the dropdown */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+}
+
+/* Focus state for the select dropdown */
+.form-group select:focus {
+    border-color: #007bff; /* Border color on focus */
+    outline: none; /* Remove default focus outline */
+}
+
+/* Optional: Styling for dropdown options */
+.form-group option {
+    padding: 8px; /* Space inside each option */
+}
+/*---------------------------------------------------------------Header Info-------------------------------------------------------------*/
+.card-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows cards to wrap to the next line if needed */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+
+    margin-top: 25px;
+    display: flex; 
+    justify-content: center; 
+    gap: 20px;
+}
+
+/* Individual card styling */
+.row1-col1 {
+    /* background: #f6f1f1; */
+    background: #f8f8f8;
+    border: 1px solid #ddd; /* Light border around the card */
+    border-radius: 8px; /* Rounded corners */
+    padding: 9px; /* Space inside the card */
+   
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    flex: 0.40;
+    height: 325px; /* Fixed height for the chart */
+}
+
+.row2-col1 input[type="file"] {
+    display: none;
+  }
+  
+.row1-col1 h1, .row1-col2 h1{
+    margin-bottom: 5px;
+    font-size: 16px;
+    text-align: center;
+    color: rgb(99, 99, 233);
+    font-family:'Poppins', sans-serif;
+}
+
+.sidebar-divider {
+    border-top: 2px solid #dee2e6;
+    margin: 5px 0; /* Spacing around the divider */
+}
+
+.row1-col1 img, .row1-col2 img {
+    max-width: 100%;     /* Prevents image from exceeding container width */
+    max-height: 100%;    /* Prevents image from exceeding container height */
+    object-fit: contain; /* Ensures the image fits without distortion */
+    display: block;      /* Removes default inline spacing */
+    margin: 15 auto;      /* Optional: center image horizontally */
+}
+.row1-col2 {
+    /* background: #f6f1f1; */
+    background: #f8f8f8;
+    border: 1px solid #ddd; /* Light border around the card */
+    border-radius: 8px; /* Rounded corners */
+    padding: 9px; /* Space inside the card */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    flex: 0.4;
+    height: 325px; /* Fixed height for the chart */
+}
+
+.row2-col1 {
+    /* background: #f6f1f1; */
+    background: #f8f8f8;
+    border: 1px solid #ddd; /* Light border around the card */
+    border-radius: 8px; /* Rounded corners */
+    padding: 9px; /* Space inside the card */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    flex: 0.4;
+    height: 50px; /* Fixed height for the chart */
+    margin-top: -15px;
+}
+
+.row2-col2 {
+    /* background: #f6f1f1; */
+    background: #f8f8f8;
+    border: 1px solid #ddd; /* Light border around the card */
+    border-radius: 8px; /* Rounded corners */
+    padding: 9px; /* Space inside the card */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    flex: 0.4;
+    height: 50px; /* Fixed height for the chart */
+    margin-top: -15px;
+}
+
+.row2-col1 label {
+    margin-top: 8px;
+    font-size: 18px;
+    display: inline-block; /* Ensures margin works as expected */
+    color: rgb(99, 99, 233);
+    font-family:'Poppins', sans-serif;
+}
+
+.row2-col1 input{
+    margin-top: 8px;
+    font-size: 15px;
+    display: inline-block; /* Ensures margin works as expected */
+    color: rgb(99, 99, 233);
+    font-family:'Poppins', sans-serif;
+   
+}
+
+.row2-col2 h1{
+    margin-top: 8px;
+    font-size: 18px;
+    text-align: left;
+    color: rgb(99, 99, 233);
+    font-family:'Poppins', sans-serif;
+}
+
+.info-download-container {
+    display: flex;
+    justify-content: space-between; /* Optional: Push items apart */
+    align-items: center;
+    gap: 20px; /* Spacing between text and button */
+}
+
+.info-download-container h1 {
+    margin: 0;
+    font-size: 18px;
+    color: rgb(99, 99, 233);
+    font-family: 'Poppins', sans-serif;
+}
+
+.info-download-container a.btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+/*-------------------------------------------------------------Footer info ----------------------------------------------------*/
+/* Footer Styling */
+.footer {
+    background-color: #f1f1f1;
+    padding: 10px; 
+    text-align: center;
+    border-top: 1px solid #e7e7e8;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    /* margin: 0; Ensure there's no margin */
+    position: relative; /* Ensure footer is positioned correctly */
+    flex-shrink: 0; /* Prevent shrinking in flex layout */
+    margin-left: 18px;
+    margin-right: 14px;
+    margin-top: -10px;
+}
+
+.footer-content {
+    /* max-width: 1200px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    margin-right: 10px;
+    
+    justify-content: center;
+
+    flex-wrap: wrap;
+}
+
+.footer-content p {
+
+font-size: 16px;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-left input, .navbar-left button {
+        margin-bottom: 10px;
+        max-width: 100%;
+    }
+
+    .navbar-right {
+        margin-top: 10px;
+        gap: 10px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-content ul {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-left input {
+        width: 100%;
+    }
+}
