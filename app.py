@@ -195,6 +195,7 @@ def submit_home_form():
     # temp_info        = request.form.get('temp_info')
     
     type_model_list = [model_type_info]
+    
     for cols in ['CNN','VGG16','Xception']:
         if cols not in type_model_list:
             type_model_list.append(cols)
