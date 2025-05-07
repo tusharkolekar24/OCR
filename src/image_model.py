@@ -40,7 +40,6 @@ def extract_data_from_images(mergeset,Images_Rotation,ml_prediction,loaded_model
             ml_images         = np.stack((ml_images2,) * 3, axis=-1)
             resize_ml_images  = ml_images.reshape(1,32,32,3)
 
-
         if model_name=='Xception':
             ml_images1        = gray_scale_images(ml_prediction[y:y+h,x:x+w],model_name)
             # ml_images         = np.stack((ml_images1,) * 3, axis=-1)
