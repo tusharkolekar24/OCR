@@ -2,24 +2,51 @@ import cv2
 import numpy as np
 import pandas as pd
 
-def gray_scale_images(images):
-    stretch_near = cv2.resize(images, (30,30), 
-                   interpolation = cv2.INTER_LINEAR)
+def gray_scale_images(images,model_name):
+
+    if model_name=='CNN':
+        stretch_near = cv2.resize(images, (30,30), 
+                    interpolation = cv2.INTER_LINEAR)
+        
+    if model_name=='VGG16':
+        stretch_near = cv2.resize(images, (32,32), 
+                    interpolation = cv2.INTER_LINEAR)
+        
+    if model_name=='Xception':
+        stretch_near = cv2.resize(images, (80,80), 
+                    interpolation = cv2.INTER_LINEAR)
 
     # Use the cvtColor() function to grayscale the image 
     gray_image = cv2.cvtColor(stretch_near, cv2.COLOR_BGR2GRAY)/255.0
     
     return gray_image
 
-def extract_data_from_images(mergeset,Images_Rotation,ml_prediction,loaded_model,encoder_json):
+def extract_data_from_images(mergeset,Images_Rotation,ml_prediction,loaded_model,encoder_json,model_name):
     common_text_detail = []
     for cord_numb in mergeset.values:
         x,y,w,h = cord_numb[0],cord_numb[1],cord_numb[2],cord_numb[3]
         # cv2.rectangle(thresh1,(x,y),(x+w,y+h),(0,255,0),1)
         cv2.rectangle(Images_Rotation,(x,y),(x+w,y+h),(0,255,0),1)
         
-        ml_images        = gray_scale_images(ml_prediction[y:y+h,x:x+w])        
-        resize_ml_images = ml_images.reshape(1,30,30)
+        if model_name=='CNN':
+            ml_images        = gray_scale_images(ml_prediction[y:y+h,x:x+w],model_name)  
+            resize_ml_images = ml_images.reshape(1,30,30)
+
+        if model_name=='VGG16':
+            ml_images1        = gray_scale_images(ml_prediction[y:y+h,x:x+w],model_name)
+            # ml_images         = np.stack((ml_images1,) * 3, axis=-1)
+            # resize_ml_images  = ml_images.reshape(1,32,32,3)
+            ml_images2        = np.array([i+1 if (i>0.12) & (i<0.5) else 0 for i in ml_images1.flatten()]).reshape(32,32)
+            ml_images         = np.stack((ml_images2,) * 3, axis=-1)
+            resize_ml_images  = ml_images.reshape(1,32,32,3)
+
+        if model_name=='Xception':
+            ml_images1        = gray_scale_images(ml_prediction[y:y+h,x:x+w],model_name)
+            # ml_images         = np.stack((ml_images1,) * 3, axis=-1)
+            # resize_ml_images  = ml_images.reshape(1,32,32,3)
+            ml_images2        = np.array([i+1 if (i>0.12) & (i<0.5) else 0 for i in ml_images1.flatten()]).reshape(80,80)
+            ml_images         = np.stack((ml_images2,) * 3, axis=-1)
+            resize_ml_images  = ml_images.reshape(1,80,80,3)
         
         prediction       = loaded_model.predict(resize_ml_images)
         

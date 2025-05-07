@@ -12,7 +12,7 @@ from flask import (Flask, flash, jsonify, redirect, render_template, request,
 from werkzeug.utils import secure_filename
 
 from datetime import datetime, timedelta
-from src.utility import loaded_model, encoder_json
+from src.utility import get_model_info
 from src.image_model import *
 
 current_date = str(datetime.now()).split(" ")[0]
@@ -39,14 +39,14 @@ def allowed_file(filename):
 
 # metainfo
 metainfo = dict()
-metainfo['type_model']    = ['cnn-model']
+metainfo['type_model']    = ['CNN','VGG16','Xception']
 metainfo['input_content']      = '' #'Latest Techqnology used in AI & ML'
 metainfo['generated_response'] = ''
 metainfo['image_path']         = ''
 metainfo['content_info']       = ''
 metainfo['filename']           = ''
 metainfo['username']           = ''
-metainfo['image_metainfo']     = {'image_path':'','process_path':'','extracted_info':''}
+metainfo['image_metainfo']     = {'image_path':'','process_path':'','extracted_info':'','type_model':''}
 # User data for Demonstration
 USERS               = {"admin": "1234"}
 
@@ -141,12 +141,17 @@ def upload_file():
         cv2.imwrite(file_path, resized_image)
 
         mapping, Upgraded_Image, Image_ML = images_preprocessing(image)
+        
+        print(metainfo['type_model'][0],'Model Selected Toperform Predictions')
+
+        loaded_model, encoder_json = get_model_info(metainfo['type_model'][0])
 
         transform_image, extracted_text = extract_data_from_images(mergeset        = mapping,
                                                                    Images_Rotation = Upgraded_Image,
                                                                    ml_prediction   = Image_ML,
                                                                    loaded_model    = loaded_model,
-                                                                   encoder_json    = encoder_json)
+                                                                   encoder_json    = encoder_json,
+                                                                   model_name      = metainfo['type_model'][0])
         
         # Save the resized image to the upload folder
         cv2.imwrite(process_path, transform_image)
@@ -161,6 +166,7 @@ def upload_file():
         metainfo['image_metainfo']['image_path']     = file_path
         metainfo['image_metainfo']['process_path']   = process_path
         metainfo['image_metainfo']['extracted_info'] = extracted_text
+        metainfo['image_metainfo']['type_model']     = metainfo['type_model'][0]
 
         # metainfo['image_metainfo']     =
         # metainfo['username']   = session["username"]
@@ -182,19 +188,32 @@ def upload_file():
 def submit_home_form():
     # Retrieve form data from home.html
     # type_model,temp_info
-
+    content_info = {'input_content'          : metainfo['input_content'],     
+                        'generated_response' : metainfo['generated_response']
+                    }
     model_type_info  = request.form.get('type_model')
     # temp_info        = request.form.get('temp_info')
     
     type_model_list = [model_type_info]
-    for cols in ['cnn-model']:
+    for cols in ['CNN','VGG16','Xception']:
         if cols not in type_model_list:
             type_model_list.append(cols)
 
     metainfo['type_model']       = type_model_list
+
+    metainfo['image_metainfo']['type_model']       = type_model_list[0]
     # metainfo['temp_infos']       = temp_info_list
-    flash("Form submitted successfully for Home page!", "success")
-    return redirect(url_for("home"))
+    # flash("Form submitted successfully for Home page!", "success")
+
+    return render_template(
+            "home.html",
+            username     = metainfo['username'],
+            form_data    = metainfo,
+            current_date = current_date,
+            content_info = content_info,
+            image_path   = metainfo['image_metainfo'],
+            filename     = metainfo['filename'] 
+        )
 
 
 @app.route("/topic_info_update", methods=["POST"])
