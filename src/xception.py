@@ -63,6 +63,7 @@ def decode_labels(y_train,y_test,num_classes):
     y_train_encoded = encoder1.fit_transform(y_train)
     y_test_encoded  = encoder1.fit_transform(y_test) 
 
+
     # num_classes =  53
 
     y_train_image = keras.utils.to_categorical(y_train_encoded, num_classes)
