@@ -1,4 +1,4 @@
-# GenAI-for-Content-Creation
-Generative AI for Content Creation
+# OCR
+Optical Character Recognition Demo
 
-![image](https://github.com/user-attachments/assets/8181aca5-a90e-4bb7-84ce-7f13764f3c9d)
+![image](https://github.com/user-attachments/assets/cd66853b-7128-4d27-88eb-b0308594e2e9)
