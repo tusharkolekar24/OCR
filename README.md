@@ -45,18 +45,6 @@ A clear breakdown of the folder structure:
 ├── requirements.txt    # Dependency file to install required libraries
 └── README.md           # Project documentation
 ```
-
-OCR-Project/
-├── artifacts/      # Contains multiple model pickle files trained on screenshot dataset
-├── src/            # Python code used as the model logic in app.py
-├── static/         # Contains images, CSS, and JavaScript files
-├── templates/      # HTML templates: base.html, home.html, login.html
-├── app.py          # Main Flask application
-├── requirements.txt# Python dependencies
-└── README.md
-
-```
-
 ## 🔧 Installation
 
 ```bash
