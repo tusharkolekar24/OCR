@@ -3,6 +3,11 @@
 ## 📌 Overview
 
 This repository contains an **Optical Character Recognition (OCR)** system built using **Transfer Learning** with modern deep learning techniques. The goal of this project is to extract text from images efficiently with high accuracy using pre-trained models.
+![image](https://github.com/user-attachments/assets/cd66853b-7128-4d27-88eb-b0308594e2e9)
+
+Kindly download the ZIP file which contains sample input images.
+This will help you quickly test and run the OCR App without generating your own data.
+
 
 ## 🚀 Key Features
 
@@ -121,8 +126,3 @@ Developed by **Tushar Kolekar**
 ---
 
 ### ⭐ If you find this project useful, consider giving it a star on GitHub!
-
-![image](https://github.com/user-attachments/assets/cd66853b-7128-4d27-88eb-b0308594e2e9)
-
-Kindly download the ZIP file which contains sample input images.
-This will help you quickly test and run the OCR App without generating your own data.
